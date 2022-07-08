@@ -1,0 +1,21 @@
+<!--search bar-->
+{% load static %}
+{% load crispy_forms_tags %}
+<form method="get"novalidate>
+    <div class="form-control">
+        {{form|crispy}}
+    </div>
+    <input type="submit" class="btn btn-sm btn-primary form-control" value="search">
+</form>
+
+<!--sidebar-->
+<!--<div class="card">-->
+<!--    <div class="card-header">-->
+<!--        Featured-->
+<!--    </div>-->
+<!--    <ul class="list-group list-group-flush">-->
+<!--        <li class="list-group-item"><a href="#">popular posts</a></li>-->
+<!--        <li class="list-group-item"><a href="#">in last day</a></li>-->
+<!--        <li class="list-group-item"><a href="#">you followed</a></li>-->
+<!--    </ul>-->
+<!--</div>-->

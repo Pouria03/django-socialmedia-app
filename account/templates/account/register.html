@@ -1,0 +1,22 @@
+{% extends 'bace.html' %}
+{% load crispy_forms_tags %}
+
+    {% block content %}
+        {% if user.is_authenticated %}
+            <h4 class="alert alert-info">you are already logged in</h4>
+        {% else %}
+            <form method="post" action="" >
+                {% csrf_token %}
+                {{form | crispy}}
+                <input type="submit" class="btn btn-success" value="Sign-Up">
+            </form>
+        {% endif %}
+    {% endblock content%}
+
+    {% block sidebar %}
+        <div class="card bg-light">
+            <div class="card-body">
+                <small>if you already have account <a href="{% url 'account:login' %}">login</a></small>
+            </div>
+        </div>
+    {% endblock sidebar %}

@@ -1,0 +1,55 @@
+{% extends 'bace.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- post section -->
+<div>
+    <div class="card-header">
+        <h5 class="card-title"><a href="{% url 'pages:profile' post.user.username %}">{{post.user.username}}</a></h5>
+        <small class="text-secondary">{{ post.created_date | date:"D-M-Y" }}</small>
+    </div>
+
+    <div class="card-body">
+        <p class="card-text">{{post.body}}</p>
+        <a class="btn btn-outline-danger" href="{% url 'posts:like' post.id %}">
+            Like ({{post.total_likes}})
+        </a>
+    </div>
+</div>
+<hr>
+
+
+<!--  comment form section  -->
+<div>
+    {% if not request.user.is_authenticated%}
+    <h4 class="alert alert-warning"> you can't comment . you must login </h4>
+    {% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{comment_form| crispy}}
+        <input class="btn btn-primary" type="submit" value="comment">
+    </form>
+    {% endif %}
+
+    <!--    list of comments    -->
+    <hr>
+    <strong>comments</strong>
+    {% for comment in comments %}
+
+    <div class="card">
+        <div class="card-header">
+            <h5 style="display:inline">{{comment.user}}</h5>
+            <small class="text-muted" style="display:inline"> - {{comment.date_comment | timesince}} ago</small>
+        </div>
+        <p class="card-body">{{comment.body}}</p>
+
+
+    </div>
+
+    {% empty %}
+    <h4> no comments yet! </h4>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+

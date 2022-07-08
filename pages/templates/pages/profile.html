@@ -1,0 +1,38 @@
+{% extends 'bace.html' %}
+
+{% block content %}
+<h3>{{user.username}}
+    {% if request.user.username == user.username %}
+        <a class="btn btn-sm btn-warning" href="{% url 'posts:create' user.username %}">add post</a>
+    {% endif %}
+    {% if request.user.username != user.username and not is_following %}
+        <a class="btn btn-sm btn-info" href="{% url 'pages:follow' user.username %}">Follow</a>
+    {% elif request.user.username != user.username and is_following %}
+        <a class="btn btn-sm btn-outline-danger" href="{% url 'pages:Unfollow' user.username %}">Unfollow</a>
+    {% endif %}
+        <a class="btn btn-sm btn-outline-dark"
+           href="{% url 'pages:followers' user.username %}">followers</a>
+        <a class="btn btn-sm btn-outline-dark"
+           href="{% url 'pages:followings' user.username%}">followings</a>
+</h3>
+<hr>
+
+
+{% for post in posts%}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title"><a href="{% url 'pages:profile' post.user.username %}">{{post.user.username}} </a></h5>
+        <small class="text-secondary">{{ post.created_date | date:"D-M-Y" }}</small>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{post.body|truncatechars:40}}</p>
+        <a class="btn btn-primary" href="{% url 'posts:detail' post.pk post.slug %}">more</a>
+        {% if request.user.id == post.user.id %}
+        <a class="btn btn-danger" href="{% url 'posts:delete' post.pk %}">delete</a>
+        <a class="btn btn-info" href="{% url 'posts:update' post.pk %}">update</a>
+        {% endif %}
+    </div>
+</div>
+<br>
+{% endfor  %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title"><a href="{% url 'pages:profile' value.user.username %}">{{value.user.username}} </a></h5> 
+    <small class="text-secondary">{{ value.created_date | date:"D-M-Y" }}</small>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{value.body|truncatechars:40}}</p>
+    <a href="{% url 'posts:detail' value.pk value.slug %}" class="btn btn-primary">more</a>
+  </div>
+</div>
+<br>

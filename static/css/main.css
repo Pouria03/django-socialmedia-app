@@ -1,0 +1,12 @@
+footer {
+
+  bottom: 0;
+  width: 100%;
+  height: 88px;
+}
+div.container{
+    padding: 6px;
+}
+a {
+    text-decoration: none;
+}

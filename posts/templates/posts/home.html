@@ -1,0 +1,14 @@
+{% extends 'bace.html' %}
+{% load static %}
+
+{% block content %}
+    <h3 class="text-warning">All Posts</h3>
+    {% for post in posts %}
+        {% include 'includes/post-card.html' with value=post %}
+    {% endfor %}
+{% endblock content %}
+
+{% block sidebar %}
+    {% include 'includes/sidebar.html' with form=search_form %}
+{% endblock sidebar %}
+
