@@ -135,9 +135,9 @@ AUTHENTICATION_BACKENDS = [
 # gmail smtp :
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'pouriashaigani@gmail.com'
+EMAIL_HOST_USER = ''
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'jesfycvbjozpbtcw'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = '[people media]'
 DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
