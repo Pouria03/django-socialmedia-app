@@ -95,7 +95,7 @@ def reset_password_email(request,username):
             'peoplemedia.com - reset password',
             f' use link below to reset your password in peoplemedia.com \n\r'
             f' http://127.0.0.1:8000/reset-password/{user.username}',
-            'pouriashaigani@gmail.com',
+            'sample@sample.com',
             recipient_list= [email],
             fail_silently=False,
         )
